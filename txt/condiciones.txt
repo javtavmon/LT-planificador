@@ -1,0 +1,23 @@
+te he colgado en la carpeta image varias capturas de pantalla:
+- la primera es 'prioridades_actual.png' en esta se muestra la carga de trabajo de un puesto de trabajo (en concreto, montaje), la carga está priorizada de esta forma:
+	* en primer lugar hay un campo 'Prioridad Proceso' el primero es 1 AOG, el segundo 3 URGENTE, el tercero 4 PROBETA y el cuarto 5 NORMAL, las prioridades se ordenan en ese orden, una pieza en AOG siempre irá antes que una pieza URGENTE
+	* en segundo lugar hay un campo 'Lleva (días)', que ordena en orden descendente para cada prioridad, es decir, dentro de las piezas que sean AOG, la primera será la que más días lleve esperando a ser procesada, en este caso 11 días, después la de 9 días.. y así sucesivamente.
+
+arriba a la izquierda hay una pantalla con KPIs de LEAD TIME teóricos y reales. los teóricos 1 y 4 muestran los días teóricos que debería tener como máximo una orden que sea de tipo 1 AOG y 5 NORMAL, respectivamente
+
+a la derecha el LT real de la orden con más días de LEAD TIME 1 AOG (11 días) y 5 NORMAL (14 días)
+esas líneas se han marcado en rojo porque el lead time en concreto está cumplido frente al teórico (obvia las líneas amarillas, significan que los operarios le están cargando tiempo, pero deberían ser rojas) y el kpi arriba también está en rojo porque se ha sobrepasado.
+
+esto es como funciona actualmente.
+
+- la segunda imagen es como quiero que funcione (prioridades_objetivo.png), con algunas salvedades:
+	* lo primero es que han desaparecido los conceptos de lead time y prioridad proceso, ahora hay una fecha de necesidad de la orden para cada orden y puesto de trabajo, calculada como hemos visto en esta conversación, ordenada de más antigua a menos y también tiene un pedido y posición asociado, que es el que genera esa necesidad.
+
+	* obvia los colores, y también obvia los kpis de lead time, quiero implementar varios cambios, dime qué te parecen:
+		+ cambio 1: que el código de color sea rojo cuando la línea tenga una fecha de necesidad de la orden en el pasado, amarillo cuando la fecha de necesidad sea hoy, y blanco el resto
+		+ cambio 2: añadir un campo que sea tiempo de fabricación por cada orden de trabajo (en horas o minutos)
+		+ cambio 3: añadir un kpi con el total de horas en retraso (con fecha de necesidad antes de hoy, otro con horas totales de carga, y un objetivo porcentual de horas de retraso frente a horas totales del 98 %, es decir, que si tengo 2 h en retraso y 100 h totales de carga, el kpi sea justo 98 %, iguale al objetivo y sea verde (si fuese 99 % o 100 % igual), por otro lado, si el kpi está por debajo, sería rojo
+
+- la tercera imagen (lookalike.png) es el look and feel actual de la pantalla en el hub (una pantalla de visualización online que estamos desarrollando.
+
+con todo esto quiero que me prepares una presentación breve en powerpoint o el sistema que prefieras de qué es lo que quiero, para podérselo pasar a mi equipo de desarrollo y pueda trabajar en ello, también estoy abierto a cualquier cambio o modificación que quieras comentarme.
